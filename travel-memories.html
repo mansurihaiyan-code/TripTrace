@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Travel Memories - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card trip-form-card">
+
+            <div class="auth-logo">
+                📸
+            </div>
+
+            <h1>Travel Memories</h1>
+
+            <p class="auth-subtitle">
+                Save your favourite travel moments
+            </p>
+
+
+            <form id="memoryForm">
+
+                <div class="form-group">
+
+                    <label for="memoryTitle">
+                        Memory Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="memoryTitle"
+                        placeholder="e.g. Sunset at Goa"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="memoryPlace">
+                        Place
+                    </label>
+
+                    <input
+                        type="text"
+                        id="memoryPlace"
+                        placeholder="e.g. Baga Beach"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="memoryDate">
+                        Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="memoryDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="memoryDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="memoryDescription"
+                        rows="4"
+                        placeholder="Write about your memory..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="memoryPhoto">
+                        Photo
+                    </label>
+
+                    <input
+                        type="file"
+                        id="memoryPhoto"
+                        accept="image/*"
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-button">
+
+                    📸 Save Memory
+
+                </button>
+
+            </form>
+
+
+            <div id="memoryList">
+
+            </div>
+
+
+            <p class="auth-footer">
+
+                <a href="index.html">
+                    ← Back to TripTrace
+                </a>
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/travel-memories.js"></script>
+
+</body>
+
+</html>

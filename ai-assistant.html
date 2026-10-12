@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="ai-container">
+
+        <div class="ai-card">
+
+            <!-- HEADER -->
+
+            <div class="ai-header">
+
+                <div class="ai-icon">
+                    🤖
+                </div>
+
+                <div>
+
+                    <h1>
+                        TripTrace AI Assistant
+                    </h1>
+
+                    <p>
+                        Your smart travel companion
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHAT AREA -->
+
+            <div
+                id="chatMessages"
+                class="chat-messages">
+
+                <div class="bot-message">
+
+                    <span class="message-icon">
+                        🤖
+                    </span>
+
+                    <div class="message-content">
+
+                        <strong>
+                            TripTrace AI
+                        </strong>
+
+                        <p>
+                            Hello! 👋 I'm your TripTrace
+                            travel assistant. How can I
+                            help you today?
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK QUESTIONS -->
+
+            <div class="quick-questions">
+
+                <button
+                    onclick="askQuestion('Show my trips')">
+
+                    ✈️ My Trips
+
+                </button>
+
+                <button
+                    onclick="askQuestion('What is my budget?')">
+
+                    💰 My Budget
+
+                </button>
+
+                <button
+                    onclick="askQuestion('How many travelers?')">
+
+                    👥 Travelers
+
+                </button>
+
+                <button
+                    onclick="askQuestion('How can I plan a trip?')">
+
+                    🗺️ Trip Planning
+
+                </button>
+
+            </div>
+
+
+            <!-- INPUT AREA -->
+
+            <div class="chat-input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask TripTrace AI..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="sendButton">
+
+                    ➤
+
+                </button>
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <a
+                href="index.html"
+                class="back-home">
+
+                ← Back to TripTrace
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/ai-assistant.js"></script>
+
+</body>
+
+</html>

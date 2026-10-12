@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                🌍
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="auth-subtitle">
+                Start your journey with TripTrace
+            </p>
+
+
+            <form id="registerForm">
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        I agree to the Terms & Conditions
+
+                    </label>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-button">
+
+                    📝 Create Account
+
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <a
+                href="index.html"
+                class="back-home">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- REGISTER LOGIC -->
+
+    <script>
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+
+        registerForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById("name").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const confirmPassword =
+                    document.getElementById("confirmPassword").value;
+
+
+                /* Check password */
+
+                if (password !== confirmPassword) {
+
+                    alert("❌ Passwords do not match.");
+
+                    return;
+
+                }
+
+
+                /* Get existing users */
+
+                const users =
+                    JSON.parse(
+                        localStorage.getItem("triptraceUsers")
+                    ) || [];
+
+
+                /* Check existing email */
+
+                const existingUser =
+                    users.find(
+                        user =>
+                        user.email.toLowerCase() ===
+                        email.toLowerCase()
+                    );
+
+
+                if (existingUser) {
+
+                    alert(
+                        "❌ This email is already registered."
+                    );
+
+                    return;
+
+                }
+
+
+                /* Create new user */
+
+                const newUser = {
+
+                    name: name,
+
+                    email: email,
+
+                    password: password
+
+                };
+
+
+                /* Save user */
+
+                users.push(newUser);
+
+                localStorage.setItem(
+                    "triptraceUsers",
+                    JSON.stringify(users)
+                );
+
+
+                /* Success */
+
+                alert(
+                    "✅ Account created successfully!"
+                );
+
+
+                /* Go to login */
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        );
+
+    </script>
+
+</body>
+
+</html>

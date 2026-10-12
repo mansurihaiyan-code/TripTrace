@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Trip - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card trip-form-card">
+
+            <div class="auth-logo">
+                ✏️
+            </div>
+
+            <h1>Edit Trip</h1>
+
+            <p class="auth-subtitle">
+                Update your trip information
+            </p>
+
+
+            <form id="editTripForm">
+
+                <div class="form-group">
+
+                    <label for="tripName">
+                        Trip Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tripName"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="startLocation">
+                        Starting Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="startLocation"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="date-row">
+
+                    <div class="form-group">
+
+                        <label for="startDate">
+                            Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="endDate">
+                            End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="endDate"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="travelers">
+                        Number of Travelers
+                    </label>
+
+                    <input
+                        type="number"
+                        id="travelers"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="budget">
+                        Estimated Budget (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="budget"
+                        min="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Trip Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="4">
+                    </textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-button">
+
+                    💾 Save Changes
+
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+
+                <a href="index.html">
+                    ← Back to My Trips
+                </a>
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+<script>
+
+    // Get the selected trip
+
+    const selectedTrip =
+        JSON.parse(
+            localStorage.getItem(
+                "triptraceSelectedTrip"
+            )
+        );
+
+
+    // Check if a trip was selected
+
+    if (!selectedTrip) {
+
+        alert("❌ No trip selected.");
+
+        window.location.href =
+            "index.html";
+
+    }
+
+
+    // Fill the form with existing data
+
+    document.getElementById("tripName").value =
+        selectedTrip.tripName;
+
+    document.getElementById("startLocation").value =
+        selectedTrip.startLocation;
+
+    document.getElementById("destination").value =
+        selectedTrip.destination;
+
+    document.getElementById("startDate").value =
+        selectedTrip.startDate;
+
+    document.getElementById("endDate").value =
+        selectedTrip.endDate;
+
+    document.getElementById("travelers").value =
+        selectedTrip.travelers;
+
+    document.getElementById("budget").value =
+        selectedTrip.budget;
+
+    document.getElementById("description").value =
+        selectedTrip.description || "";
+        // Save edited trip
+
+const editTripForm =
+    document.getElementById("editTripForm");
+
+
+editTripForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        // Get updated values
+
+        selectedTrip.tripName =
+            document.getElementById("tripName").value.trim();
+
+        selectedTrip.startLocation =
+            document.getElementById("startLocation").value.trim();
+
+        selectedTrip.destination =
+            document.getElementById("destination").value.trim();
+
+        selectedTrip.startDate =
+            document.getElementById("startDate").value;
+
+        selectedTrip.endDate =
+            document.getElementById("endDate").value;
+
+        selectedTrip.travelers =
+            Number(
+                document.getElementById("travelers").value
+            );
+
+        selectedTrip.budget =
+            Number(
+                document.getElementById("budget").value
+            );
+
+        selectedTrip.description =
+            document.getElementById("description").value.trim();
+
+
+        // Check dates
+
+        if (selectedTrip.endDate < selectedTrip.startDate) {
+
+            alert(
+                "❌ End date cannot be before start date."
+            );
+
+            return;
+
+        }
+
+
+        // Get all trips
+
+        const trips =
+            JSON.parse(
+                localStorage.getItem("triptraceTrips")
+            ) || [];
+
+
+        // Find the trip and update it
+
+        const tripIndex =
+            trips.findIndex(
+                trip =>
+                    trip.id === selectedTrip.id
+            );
+
+
+        if (tripIndex === -1) {
+
+            alert("❌ Trip not found.");
+
+            return;
+
+        }
+
+
+        trips[tripIndex] =
+            selectedTrip;
+
+
+        // Save updated trips
+
+        localStorage.setItem(
+            "triptraceTrips",
+            JSON.stringify(trips)
+        );
+
+
+        // Update selected trip too
+
+        localStorage.setItem(
+            "triptraceSelectedTrip",
+            JSON.stringify(selectedTrip)
+        );
+
+
+        alert(
+            "✅ Trip updated successfully!"
+        );
+
+
+        // Return to Home
+
+        window.location.href =
+            "index.html";
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

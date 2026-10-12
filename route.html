@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Find Route - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card trip-form-card">
+
+            <div class="auth-logo">
+                🗺️
+            </div>
+
+            <h1>Find Route</h1>
+
+            <p class="auth-subtitle">
+                Find the best route for your journey
+            </p>
+
+
+            <form id="routeForm">
+
+                <div class="form-group">
+
+                    <label for="from">
+                        Starting Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="from"
+                        placeholder="e.g. Ahmedabad"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="to">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="to"
+                        placeholder="e.g. Mumbai"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="routeType">
+                        Route Preference
+                    </label>
+
+                    <select id="routeType">
+
+                        <option value="fastest">
+                            ⚡ Fastest Route
+                        </option>
+
+                        <option value="shortest">
+                            🛣️ Shortest Route
+                        </option>
+
+                        <option value="cheapest">
+                            💰 Cheapest Route
+                        </option>
+
+                    </select>
+
+                </div>
+<div class="form-group">
+
+    <label for="travelMode">
+        🚗 Travel Mode
+    </label>
+
+    <select id="travelMode">
+
+        <option value="car">
+            🚗 Car
+        </option>
+
+        <option value="bike">
+            🏍️ Bike
+        </option>
+
+        <option value="bus">
+            🚌 Bus
+        </option>
+
+        <option value="train">
+            🚆 Train
+        </option>
+
+    </select>
+
+</div>
+
+                <button
+                    type="submit"
+                    class="auth-button">
+
+                    🔍 Find Best Route
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="routeResult"
+                class="route-result"
+                style="display: none;">
+
+            </div>
+
+
+            <p class="auth-footer">
+
+                <a href="index.html">
+                    ← Back to TripTrace
+                </a>
+
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const routeForm =
+            document.getElementById("routeForm");
+
+        const routeResult =
+            document.getElementById("routeResult");
+
+
+        routeForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const from =
+                    document.getElementById("from")
+                    .value.trim();
+
+                const to =
+                    document.getElementById("to")
+                    .value.trim();
+
+                const routeType =
+                    document.getElementById("routeType")
+                    .value;
+                const travelMode =
+                    document.getElementById("travelMode")
+                    .value;
+
+                let routeName = "";
+                let description = "";
+
+
+                if (routeType === "fastest") {
+
+                    routeName =
+                        "⚡ Fastest Route";
+
+                    description =
+                        "This option prioritizes minimum travel time.";
+
+                }
+
+                else if (routeType === "shortest") {
+
+                    routeName =
+                        "🛣️ Shortest Route";
+
+                    description =
+                        "This option prioritizes minimum travel distance.";
+
+                }
+
+                else {
+
+                    routeName =
+                        "💰 Cheapest Route";
+
+                    description =
+                        "This option prioritizes lower estimated travel cost.";
+
+                }
+
+
+                routeResult.innerHTML = `
+
+                    <h2>
+                        ${routeName}
+                    </h2>
+
+                    <p>
+                        <strong>${from}</strong>
+                        →
+                        <strong>${to}</strong>
+                    </p>
+
+                    <p>
+                        ${description}
+                    </p>
+
+                    <div class="route-info">
+
+                        <p>📍 Starting Point: ${from}</p>
+
+                        <p>🎯 Destination: ${to}</p>
+
+                       <p>
+                          🚗 Travel Mode:
+                           ${travelMode}
+                       ]</p>
+
+                        <p>
+                           🧭 Route Preference:
+                            ${routeName}
+                        </p> 
+                    </div>
+
+                    <p>
+                        💡 For live distance, traffic,
+                        and navigation, connect a maps API.
+                    </p>
+
+                `;
+
+
+                routeResult.style.display =
+                    "block";
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

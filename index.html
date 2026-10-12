@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TripTrace - Smart Travel Platform</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TripTrace - Smart Travel Platform</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+     <!-- HEADER -->
+
+    <header class="hero-header">
+
+    <div class="hero-content">
+
+        <!-- Your TripTrace logo goes here -->
+        <img src="image/travel-bg.jpg"
+             alt="TripTrace Logo"
+             class="triptrace-logo">
+
+        <h1>Welcome to TripTrace</h1>
+
+        <p>
+            Your smart travel information platform.
+        </p>
+
+    </div>
+
+
+</header>
+    <!-- TOP NAVIGATION -->
+
+    <nav class="top-navigation" id="topNavigation">
+    <a href="ai-assistant.html" class="ai-nav-link">
+    🤖 AI Assistant
+    </a>
+    <a href="login.html" id="loginLink">
+        <button class="login-button">
+            🔐 Login
+        </button>
+    </a>
+
+    <a href="register.html" id="registerLink">
+        <button class="register-button">
+            📝 Register
+        </button>
+    </a>
+
+    <span id="userWelcome" class="user-welcome"></span>
+
+    <button
+        id="logoutButton"
+        class="logout-button"
+        style="display: none;">
+        🚪 Logout
+    </button>
+
+</nav>
+
+    <!-- MAIN CONTENT -->
+
+    <main>
+
+        <h2>Welcome to TripTrace</h2>
+
+        <p>
+            Your smart travel information platform.
+        </p>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="quick-actions">
+
+    <h2>Quick Actions</h2>
+
+    <div class="action-grid">
+
+        <a href="create-trip.html" class="action-card">
+
+            <span class="action-icon">✈️</span>
+
+            <h3>Create Trip</h3>
+
+            <p>Plan a new journey</p>
+
+        </a>
+
+
+       <a href="route.html" class="action-card">
+
+            <span class="action-icon">🗺️</span>
+
+            <h3>Find Route</h3>
+
+            <p>Find the best route</p>
+
+        </a>
+
+
+        <a href="add-expense.html" class="action-card">
+
+
+            <span class="action-icon">💰</span>
+
+            <h3>Add Expense</h3>
+
+            <p>Track your spending</p>
+
+        </a>
+
+
+        <a href="travel-memories.html">
+
+            <span class="action-icon">📸</span>
+
+            <h3>Add Memory</h3>
+
+            <p>Save your memories</p>
+
+        </a>
+           <a href="ai-assistant.html" class="action-card">
+ 
+           <span class="action-icon">🤖</span>
+
+        <h3>AI Assistant</h3>
+
+        <p>Get smart travel help</p>
+
+        </a>
+    </div>
+
+</section>
+
+
+        <!-- TRIP INFORMATION -->
+
+        <section class="my-trips">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>My Trips</h2>
+
+            <p>
+                Manage and view your journeys
+            </p>
+
+        </div>
+
+        <a href="#" class="view-all">
+            View All →
+        </a>
+
+    </div>
+
+
+    <!-- EMPTY TRIP STATE -->
+
+    <div id="tripsContainer" class="trips-container">
+
+    <div class="empty-trip" id="emptyTrip">
+
+        <div class="empty-trip-icon">
+            ✈️
+        </div>
+
+        <h3>No trips created yet</h3>
+
+        <p>
+            Start planning your next adventure
+            with TripTrace.
+        </p>
+
+        <a href="create-trip.html" class="create-trip-button">
+            + Create Your First Trip
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+        <!-- FEATURES -->
+
+        <section class="features-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>TripTrace Features</h2>
+
+            <p>
+                Everything you need for a smarter journey
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <!-- FEATURE 1 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ✈️
+            </div>
+
+            <h3>Trip Planning</h3>
+
+            <p>
+                Create and organize your complete
+                travel plans in one place.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 2 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🗺️
+            </div>
+
+            <h3>Smart Route Finder</h3>
+
+            <p>
+                Compare different routes and
+                find the best option.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 3 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>Fastest Route</h3>
+
+            <p>
+                Find the route with the minimum
+                travel time.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 4 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🛣️
+            </div>
+
+            <h3>Shortest Route</h3>
+
+            <p>
+                Find the route with the shortest
+                travel distance.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 5 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <h3>Cheapest Route</h3>
+
+            <p>
+                Compare estimated travel costs
+                and save money.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 6 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>Expense Analytics</h3>
+
+            <p>
+                Track spending and understand
+                your travel expenses.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 7 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                👥
+            </div>
+
+            <h3>Group Management</h3>
+
+            <p>
+                Manage members and divide
+                expenses with your group.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 8 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📸
+            </div>
+
+            <h3>Travel Memories</h3>
+
+            <p>
+                Save your photos, places and
+                memorable travel moments.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 9 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🤖
+            </div>
+
+            <h3>Smart Assistant</h3>
+
+            <p>
+                Get intelligent answers based
+                on your trip information.
+            </p>
+
+        </div>
+
+
+        <!-- FEATURE 10 -->
+
+       <a href="trip-report.html" class="feature-card">
+            <div class="feature-icon">
+                📄
+            </div>
+
+            <h3>Trip Report</h3>
+
+            <p>
+                Generate a complete summary
+                of your journey.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+<footer class="main-footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <h2>🌍 TripTrace</h2>
+
+            <p>
+                Capture your journey. Track your memories.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="login.html">Login</a>
+
+            <a href="register.html">Register</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 TripTrace. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+<script>
+
+    const currentUser =
+        JSON.parse(
+            localStorage.getItem("triptraceCurrentUser")
+        );
+
+    const loginLink =
+        document.getElementById("loginLink");
+
+    const registerLink =
+        document.getElementById("registerLink");
+
+    const userWelcome =
+        document.getElementById("userWelcome");
+
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+
+    // Check if user is logged in
+
+    if (currentUser) {
+
+        userWelcome.textContent =
+            "👋 Welcome, " + currentUser.name;
+
+        loginLink.style.display = "none";
+
+        registerLink.style.display = "none";
+
+        logoutButton.style.display = "inline-block";
+
+    }
+
+
+    // Logout
+
+    logoutButton.addEventListener(
+        "click",
+        function() {
+
+            localStorage.removeItem(
+                "triptraceCurrentUser"
+            );
+
+            window.location.reload();
+
+        }
+    );
+        // =========================
+    // DISPLAY SAVED TRIPS
+    // =========================
+
+    const tripsContainer =
+        document.getElementById("tripsContainer");
+
+    const emptyTrip =
+        document.getElementById("emptyTrip");
+
+
+    // Get saved trips
+
+    const trips =
+        JSON.parse(
+            localStorage.getItem("triptraceTrips")
+        ) || [];
+
+
+    // Get only current user's trips
+
+    const userTrips =
+        currentUser
+            ? trips.filter(
+                trip =>
+                    trip.userEmail ===
+                    currentUser.email
+              )
+            : [];
+
+
+    // Display trips
+
+    if (userTrips.length > 0) {
+
+        emptyTrip.style.display = "none";
+
+
+        userTrips.forEach(function(trip) {
+
+            const tripCard =
+                document.createElement("div");
+
+            tripCard.className =
+                "trip-card";
+
+
+           tripCard.innerHTML = `
+
+    <div class="trip-card-icon">
+        ✈️
+    </div>
+
+    <div class="trip-card-content">
+
+        <h3>
+            ${trip.tripName}
+        </h3>
+
+        <p class="trip-route">
+            📍 ${trip.startLocation}
+            →
+            🏁 ${trip.destination}
+        </p>
+
+        <p>
+            📅 ${trip.startDate}
+            → ${trip.endDate}
+        </p>
+
+        <p>
+            👥 ${trip.travelers} Travelers
+        </p>
+
+        <p>
+            💰 ₹${trip.budget}
+        </p>
+
+        <button
+            class="view-trip-button"
+            onclick="viewTrip(${trip.id})">
+
+            👁️ View Details
+
+        </button>
+    <button
+       class="edit-trip-button"
+       onclick="editTrip(${trip.id})">
+
+       ✏️ Edit Trip
+  
+    </button>
+    <button
+    class="delete-trip-button"
+    onclick="deleteTrip(${trip.id})">
+
+    🗑️ Delete Trip
+
+</button>
+    </div>
+
+  `;
+
+
+            tripsContainer.appendChild(
+                tripCard
+            );
+
+        });
+
+    }
+function viewTrip(tripId) {
+
+    const selectedTrip =
+        trips.find(
+            trip => trip.id === tripId
+        );
+
+    if (!selectedTrip) {
+
+        alert("❌ Trip not found.");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        "triptraceSelectedTrip",
+        JSON.stringify(selectedTrip)
+    );
+
+    window.location.href =
+        "trip-details.html";
+}
+
+
+function editTrip(tripId) {
+
+    const selectedTrip =
+        trips.find(
+            trip => trip.id === tripId
+        );
+
+    if (!selectedTrip) {
+
+        alert("❌ Trip not found.");
+
+        return;
+    }
+
+    localStorage.setItem(
+        "triptraceSelectedTrip",
+        JSON.stringify(selectedTrip)
+    );
+
+    window.location.href =
+        "edit-trip.html";
+
+}
+
+
+function deleteTrip(tripId) {
+
+    const confirmDelete =
+        confirm(
+            "⚠️ Are you sure you want to delete this trip?"
+        );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    let trips =
+        JSON.parse(
+            localStorage.getItem("triptraceTrips")
+        ) || [];
+
+    trips = trips.filter(
+        trip => trip.id !== tripId
+    );
+
+    localStorage.setItem(
+        "triptraceTrips",
+        JSON.stringify(trips)
+    );
+
+    alert(
+        "✅ Trip deleted successfully!"
+    );
+
+    window.location.reload();
+
+}
+
+</script>
+</body>
+</html>

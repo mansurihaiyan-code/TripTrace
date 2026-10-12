@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Trip Details - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card trip-details-card">
+
+            <div class="auth-logo">
+                ✈️
+            </div>
+
+            <h1 id="tripTitle">
+                Trip Details
+            </h1>
+
+            <p class="auth-subtitle">
+                Your journey information
+            </p>
+
+
+            <div id="tripDetails">
+
+                <!-- Trip information will appear here -->
+
+            </div>
+
+
+            <div class="trip-details-actions">
+
+                <a href="index.html"
+                   class="back-home">
+                    ← Back to My Trips
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        // Get selected trip
+
+        const selectedTrip =
+            JSON.parse(
+                localStorage.getItem(
+                    "triptraceSelectedTrip"
+                )
+            );
+
+
+        const tripDetails =
+            document.getElementById(
+                "tripDetails"
+            );
+
+        const tripTitle =
+            document.getElementById(
+                "tripTitle"
+            );
+
+
+        // Check if trip exists
+
+        if (!selectedTrip) {
+
+            tripDetails.innerHTML = `
+
+                <div class="empty-trip">
+
+                    <div class="empty-trip-icon">
+                        ❌
+                    </div>
+
+                    <h3>
+                        Trip Not Found
+                    </h3>
+
+                    <p>
+                        We couldn't find the selected trip.
+                    </p>
+
+                </div>
+
+            `;
+
+        } else {
+
+            // Set title
+
+            tripTitle.textContent =
+                selectedTrip.tripName;
+
+
+            // Display details
+
+            tripDetails.innerHTML = `
+
+                <div class="detail-item">
+
+                    <span class="detail-icon">
+                        📍
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Route
+                        </strong>
+
+                        <p>
+                            ${selectedTrip.startLocation}
+                            →
+                            ${selectedTrip.destination}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-icon">
+                        📅
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Travel Dates
+                        </strong>
+
+                        <p>
+                            ${selectedTrip.startDate}
+                            → ${selectedTrip.endDate}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-icon">
+                        👥
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Travelers
+                        </strong>
+
+                        <p>
+                            ${selectedTrip.travelers}
+                            people
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-icon">
+                        💰
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Budget
+                        </strong>
+
+                        <p>
+                            ₹${selectedTrip.budget}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span class="detail-icon">
+                        📝
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Description
+                        </strong>
+
+                        <p>
+                            ${selectedTrip.description ||
+                            "No description added."}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Trip - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card trip-form-card">
+
+            <div class="auth-logo">
+                ✈️
+            </div>
+
+            <h1>Create New Trip</h1>
+
+            <p class="auth-subtitle">
+                Plan your next adventure
+            </p>
+
+
+            <form id="tripForm">
+
+                <!-- TRIP NAME -->
+
+                <div class="form-group">
+
+                    <label for="tripName">
+                        Trip Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tripName"
+                        placeholder="e.g. Goa Trip"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- START LOCATION -->
+
+                <div class="form-group">
+
+                    <label for="startLocation">
+                        Starting Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="startLocation"
+                        placeholder="e.g. Ahmedabad"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DESTINATION -->
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="e.g. Goa"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DATES -->
+
+                <div class="date-row">
+
+                    <div class="form-group">
+
+                        <label for="startDate">
+                            Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="startDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="endDate">
+                            End Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="endDate"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRAVELERS -->
+
+                <div class="form-group">
+
+                    <label for="travelers">
+                        Number of Travelers
+                    </label>
+
+                    <input
+                        type="number"
+                        id="travelers"
+                        min="1"
+                        placeholder="e.g. 4"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- BUDGET -->
+
+                <div class="form-group">
+
+                    <label for="budget">
+                        Estimated Budget (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="budget"
+                        min="0"
+                        placeholder="e.g. 10000"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Trip Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        placeholder="Tell us about your trip..."
+                        rows="4"></textarea>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-button">
+
+                    ✈️ Create Trip
+
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+
+                <a href="index.html">
+                    ← Back to Home
+                </a>
+
+            </p>
+
+        </div>
+
+    </main>
+<script>
+
+    const tripForm =
+        document.getElementById("tripForm");
+
+
+    tripForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            // Get form values
+
+            const tripName =
+                document.getElementById("tripName")
+                .value.trim();
+
+            const startLocation =
+                document.getElementById("startLocation")
+                .value.trim();
+
+            const destination =
+                document.getElementById("destination")
+                .value.trim();
+
+            const startDate =
+                document.getElementById("startDate")
+                .value;
+
+            const endDate =
+                document.getElementById("endDate")
+                .value;
+
+            const travelers =
+                document.getElementById("travelers")
+                .value;
+
+            const budget =
+                document.getElementById("budget")
+                .value;
+
+            const description =
+                document.getElementById("description")
+                .value.trim();
+
+
+            // Check dates
+
+            if (endDate < startDate) {
+
+                alert(
+                    "❌ End date cannot be before start date."
+                );
+
+                return;
+
+            }
+
+
+            // Get existing trips
+
+            const trips =
+                JSON.parse(
+                    localStorage.getItem("triptraceTrips")
+                ) || [];
+
+
+            // Get current user
+
+            const currentUser =
+                JSON.parse(
+                    localStorage.getItem(
+                        "triptraceCurrentUser"
+                    )
+                );
+
+
+            // Create trip
+
+            const newTrip = {
+
+                id: Date.now(),
+
+                userEmail:
+                    currentUser
+                        ? currentUser.email
+                        : null,
+
+                tripName: tripName,
+
+                startLocation: startLocation,
+
+                destination: destination,
+
+                startDate: startDate,
+
+                endDate: endDate,
+
+                travelers: Number(travelers),
+
+                budget: Number(budget),
+
+                description: description
+
+            };
+
+
+            // Save trip
+
+            trips.push(newTrip);
+
+            localStorage.setItem(
+                "triptraceTrips",
+                JSON.stringify(trips)
+            );
+
+
+            alert(
+                "✅ Trip created successfully!"
+            );
+
+
+            // Return to Home
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
+</script>
+</body>
+
+</html>

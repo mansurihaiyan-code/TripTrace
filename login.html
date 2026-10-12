@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - TripTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-logo">
+                🌍
+            </div>
+
+            <h1>Welcome Back</h1>
+
+            <p class="auth-subtitle">
+                Login to continue your journey
+            </p>
+
+            <form>
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="remember-row">
+
+                    <label>
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="forgot-password.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-button">
+                    Login
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+
+                Don't have an account?
+
+                <a href="register.html">
+                    Create Account
+                </a>
+
+            </p>
+
+
+            <a href="index.html"
+               class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+<script>
+    const loginForm = document.querySelector("form");
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        // Get registered users
+        const users =
+            JSON.parse(
+                localStorage.getItem("triptraceUsers")
+            ) || [];
+
+        // Find matching user
+        const user =
+            users.find(
+                user =>
+                    user.email.toLowerCase() === email.toLowerCase() &&
+                    user.password === password
+            );
+
+        // Login successful
+        if (user) {
+
+            // Save logged-in user
+            localStorage.setItem(
+                "triptraceCurrentUser",
+                JSON.stringify(user)
+            );
+
+            alert("✅ Login successful!");
+
+            window.location.href = "index.html";
+
+        } else {
+
+            alert(
+                "❌ Invalid email or password."
+            );
+
+        }
+
+    });
+</script>
+</html>
